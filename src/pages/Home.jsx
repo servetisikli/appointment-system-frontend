@@ -19,6 +19,7 @@ const Home = () => {
     date: "",
     time: "",
     description: "",
+    attendee: "",
   });
 
   useEffect(() => {
@@ -58,6 +59,7 @@ const Home = () => {
       date: appointment.date,
       time: appointment.time,
       description: appointment.description,
+      attendee: appointment.attendee || "",
     });
     setShowModal(true);
   };
@@ -74,6 +76,7 @@ const Home = () => {
       date: "",
       time: "",
       description: "",
+      attendee: "",
     });
     setCurrentAppointment(null);
     setShowModal(false);
@@ -146,6 +149,12 @@ const Home = () => {
                   </th>
                   <th
                     scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Attendee
+                  </th>
+                  <th
+                    scope="col"
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Actions
@@ -166,6 +175,9 @@ const Home = () => {
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-500">
                       {appointment.description}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {appointment.attendee}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
@@ -256,6 +268,19 @@ const Home = () => {
                     onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   ></textarea>
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-gray-700 text-sm font-medium mb-2">
+                    Attendee
+                  </label>
+                  <input
+                    type="text"
+                    name="attendee"
+                    value={formData.attendee || ""}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
                 </div>
               </div>
 
